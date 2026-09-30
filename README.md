@@ -6,7 +6,7 @@ Six free, runnable experiments in the invisible assumptions that break software.
 Predict an outcome, trigger a failure, inspect its trace, apply a repair, and take
 a regression-test reference into your own project.
 
-**Live demo: https://munmiwenslink-os.github.io/break-your-assumptions/**
+**Live demo: https://wenslink-os.github.io/break-your-assumptions/**
 
 No signup · No API keys · No runtime dependencies · No build step · No analytics
 
