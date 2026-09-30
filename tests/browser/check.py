@@ -131,7 +131,7 @@ def main():
             check(f'{lid}: download is named {lid}.test.cjs', d.suggested_filename == f'{lid}.test.cjs', d.suggested_filename)
             env = {k: v for k, v in os.environ.items() if k != 'NODE_TEST_CONTEXT'}
             run = subprocess.run(['node', '--test', path], capture_output=True, text=True, env=env, cwd=tmp)
-            check(f'{lid}: downloaded file passes under node --test', run.returncode == 0 and '# fail 0' in run.stdout, run.stdout[-300:] + run.stderr[-300:])
+            check(f'{lid}: downloaded file passes under node --test', run.returncode == 0 and ('# fail 0' in run.stdout or 'ℹ fail 0' in run.stdout), run.stdout[-300:] + run.stderr[-300:])
             if shots:
                 page.screenshot(path=os.path.join(shots, f'desktop-{lid}.png'), full_page=True)
 

@@ -206,8 +206,10 @@ test('all six exported files execute under the real Node test runner', () => {
       fs.writeFileSync(file, engine.exportTest(lab.id), 'utf8');
       const run = spawnSync(process.execPath, ['--test', file], { encoding: 'utf8', env, cwd: dir });
       assert.equal(run.status, 0, `${lab.id} exited ${run.status}\n${run.stdout}\n${run.stderr}`);
-      assert.match(run.stdout, new RegExp(`# tests ${lab.options.length * 2}\\b`), `${lab.id} test count`);
-      assert.match(run.stdout, /# fail 0\b/, `${lab.id} failures`);
+      // Node 22 prints TAP ("# tests N") when not attached to a terminal; Node 24 prints the spec format ("ℹ tests N").
+      assert.match(run.stdout, new RegExp(`(?:# |ℹ )tests ${lab.options.length * 2}\\b`), `${lab.id} test count`);
+      assert.match(run.stdout, /(?:# |ℹ )fail 0\b/, `${lab.id} failures`);
+      assert.match(run.stdout, /(?:# |ℹ )pass \d+\b/, `${lab.id} passes`);
     }
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });

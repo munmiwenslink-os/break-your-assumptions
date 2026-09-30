@@ -3,13 +3,14 @@
 Every row states what was actually executed. Nothing here is a claim about untested browsers,
 assistive technology, or production suitability.
 
-Environment: Linux cloud workspace, Node.js 22.22.2, Python 3 with Playwright 1.56.0 and the
+Environment: Linux cloud workspace, Node.js 22.22.2 and 24.21.0, Python 3 with Playwright 1.56.0 and the
 bundled Chromium, 2026-09-30.
 
 | Check | Result |
 | --- | --- |
-| `npm test` (engine, exporter, repository-hygiene tests) | 41 tests, 41 passed, 0 failed |
-| `npm run test:examples` (six committed exported files) | 30 tests, 30 passed, 0 failed |
+| `npm test` (engine, exporter, repository-hygiene tests), Node.js 22.22.2 | 41 tests, 41 passed, 0 failed |
+| `npm test`, Node.js 24.21.0 | 41 tests, 41 passed, 0 failed |
+| `npm run test:examples` (six committed exported files), Node.js 22.22.2 and 24.21.0 | 30 tests, 30 passed, 0 failed on each |
 | Starter release claims (25 core tests, 12 example tests) | Historical claims only. Re-run and superseded by the rows above |
 | Browser script `tests/browser/check.py` on `file:///.../index.html` | 167 checks, 167 passed |
 | Same script on `http://localhost:8765/break-your-assumptions/` (repository-subpath layout) | 167 checks, 167 passed |
@@ -23,11 +24,17 @@ malformed local storage, direct links with Back and Forward, horizontal overflow
 320 px, reduced-motion styles, keyboard opening, focus, skip link, and console/page errors and
 failed requests.
 
+## Defect found by CI and fixed
+
+The first GitHub Actions run failed on Node.js 24 while Node.js 22 passed. The cause was a test
+that parsed the test runner's TAP output (`# tests N`); Node.js 24 prints the spec format
+(`ℹ tests N`) when not attached to a terminal. The test now accepts both formats and still asserts
+the exact test count and zero failures. No assertion was removed or weakened.
+
 ## Not verified
 
 - Browsers other than Chromium, and real mobile devices (narrow layouts were emulated with a resized viewport).
 - Screen readers. The live-region text was checked in the DOM, not heard through assistive technology.
-- Node.js 24 locally. The GitHub Actions matrix runs Node.js 22 and 24 after publication.
 - Any claim of formal accessibility conformance.
 
 ## Manual checklist for future releases
