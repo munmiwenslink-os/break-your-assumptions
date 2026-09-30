@@ -29,7 +29,7 @@ failed requests.
 | Check | Result |
 | --- | --- |
 | GitHub Actions on free `ubuntu-latest` runners, Node.js 22 and 24 | First run failed on Node.js 24 (see below). After the fix, both matrix jobs passed |
-| GitHub Pages deployment from `main` (root) | Live at https://munmiwenslink-os.github.io/break-your-assumptions/ |
+| GitHub Pages deployment from `main` (root) | Live at https://wenslink-os.github.io/break-your-assumptions/ |
 | Live page assets (`index.html`, `styles.css`, `src/engine.js`, `src/app.js`, `assets/favicon.svg`) | All HTTP 200; no console messages captured on load |
 | Live in-page script in desktop Chrome: six default failures and repairs, every condition in both versions, both offline patterns, direct hash links, Back/Forward, progress and reset | 43 of 43 checks passed |
 | Live narrow layout: 390 px-wide frame, landing plus all six labs with results and source open | No horizontal page overflow |
