@@ -24,6 +24,21 @@ malformed local storage, direct links with Back and Forward, horizontal overflow
 320 px, reduced-motion styles, keyboard opening, focus, skip link, and console/page errors and
 failed requests.
 
+## After publication (2026-09-30)
+
+| Check | Result |
+| --- | --- |
+| GitHub Actions on free `ubuntu-latest` runners, Node.js 22 and 24 | First run failed on Node.js 24 (see below). After the fix, both matrix jobs passed |
+| GitHub Pages deployment from `main` (root) | Live at https://munmiwenslink-os.github.io/break-your-assumptions/ |
+| Live page assets (`index.html`, `styles.css`, `src/engine.js`, `src/app.js`, `assets/favicon.svg`) | All HTTP 200; no console messages captured on load |
+| Live in-page script in desktop Chrome: six default failures and repairs, every condition in both versions, both offline patterns, direct hash links, Back/Forward, progress and reset | 43 of 43 checks passed |
+| Live narrow layout: 390 px-wide frame, landing plus all six labs with results and source open | No horizontal page overflow |
+| Live test download: the generated file for each lab, captured from the page without saving to disk | Byte-identical to the committed `examples/<lab>.test.cjs`, which run in CI and locally |
+
+Live checks used an in-page script in Chrome rather than Playwright, because the build workspace
+cannot reach `github.io`. Downloaded files were not executed with Node.js straight from the live site;
+they are identical to the committed examples that CI executes.
+
 ## Defect found by CI and fixed
 
 The first GitHub Actions run failed on Node.js 24 while Node.js 22 passed. The cause was a test
