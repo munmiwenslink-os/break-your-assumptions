@@ -1,0 +1,23 @@
+{
+  "name": "break-your-assumptions",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Six runnable experiments in the assumptions that break software. It works. Until it doesn't.",
+  "license": "MIT AND CC-BY-4.0",
+  "homepage": "https://munmiwenslink-os.github.io/break-your-assumptions/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/munmiwenslink-os/break-your-assumptions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/munmiwenslink-os/break-your-assumptions/issues"
+  },
+  "keywords": ["education", "software-engineering", "testing", "debugging", "unicode", "offline-first"],
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "test:examples": "node --test examples/*.test.cjs",
+    "examples": "node scripts/build-examples.cjs",
+    "start": "python3 -m http.server 8080"
+  },
+  "engines": { "node": ">=22" }
+}
