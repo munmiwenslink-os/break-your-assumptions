@@ -4,13 +4,13 @@
   "private": true,
   "description": "Six runnable experiments in the assumptions that break software. It works. Until it doesn't.",
   "license": "MIT AND CC-BY-4.0",
-  "homepage": "https://munmiwenslink-os.github.io/break-your-assumptions/",
+  "homepage": "https://wenslink-os.github.io/break-your-assumptions/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/munmiwenslink-os/break-your-assumptions.git"
+    "url": "git+https://github.com/wenslink-os/break-your-assumptions.git"
   },
   "bugs": {
-    "url": "https://github.com/munmiwenslink-os/break-your-assumptions/issues"
+    "url": "https://github.com/wenslink-os/break-your-assumptions/issues"
   },
   "keywords": ["education", "software-engineering", "testing", "debugging", "unicode", "offline-first"],
   "scripts": {
